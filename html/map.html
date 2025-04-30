@@ -35,7 +35,7 @@
             </div>
          </div>
          <div>
-         <table id="myTable" class="display">
+         <table id="ratingTable" class="display">
             <thead>
                 <tr>
                     <th>Property</th>
@@ -65,6 +65,11 @@
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
        <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
       <script>app.resultsMap();
+      </script>
+      <script>
+      $(document).ready( function () {
+       $('#ratingTable').DataTable();
+         } );
       </script>
    </body>
 </html>
