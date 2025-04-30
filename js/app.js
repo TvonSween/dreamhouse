@@ -10,7 +10,7 @@ import 'datatables.net-responsive-dt';
 
     app.homepage = function() {
         //loginStartup();
-        updateConfiguration();
+        //updateConfiguration();
         loadFromStorage();
     };
 
