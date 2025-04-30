@@ -19,7 +19,6 @@ import 'datatables.net-responsive-dt';
     };
 
     app.configure = function() {
-        loadFromStorage();
       updateConfiguration();
     };
 
@@ -29,7 +28,6 @@ import 'datatables.net-responsive-dt';
 
     app.resultsMap = function() {
         displayMap();
-      
     };
 
     function saveToLocalStorage() {
