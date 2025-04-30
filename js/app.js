@@ -19,6 +19,7 @@ import 'datatables.net-responsive-dt';
     };
 
     app.configure = function() {
+        loadFromStorage();
       updateConfiguration();
     };
 
