@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>dreamHouse-configure</title>
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="../css/site.css">
+   </head>
+   <body>
+      <header>
+         <nav>
+            <a href="../index.html">Home</a>
+            <a href="map.html">Map</a>
+            <a href="rate.html">Rate</a>
+            <a href="configure.html">Configure</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+         </nav>
+      </header>
+      <main>
+         <div  class="banner">
+            <img src="../images/hero-image.jpg" alt="" aria-hidden="true">
+            <div class="banner-text">
+               <h1>Configure</h1>
+            </div>
+         </div>
+         <div>
+            <h2>Configure your rating rules</h2>
+            <p>Configure your criteria for your property search. Click on items to remove them from the list below. When you save the list, your new rating criteria will be saved. You can also add your own new criteria below. </p>
+         </div>
+           
+         <div>
+            <ul id="configuration-list">
+              <li>Bedrooms</li>
+               <li>Bathroom(s)</li>
+               <li>Kitchen</li>
+               <li>Living room</li>
+               <li>Garden/back of property</li>
+               <li>Driveway/front of property</li>
+               <li>Location</li>
+               <li>Commute</li>
+               <li>Local amenities</li>
+               <li>Do you like this property</li>
+               <li>Pros</li>
+               <li>Cons</li>
+            </ul>
+         </div>
+      
+            <!--  <div>
+               <label for="kitchen">Kitchen: </label>
+               <input type="number" id="kitchen" name="kitchen">
+               <button type="remove">Remove</button>
+            </div>
+           
+               <div>
+               <label for="living">Living room: </label>
+               <input type="number" id="living" name="living">
+               <button type="remove">Remove</button>
+            </div>
+            
+               <div>
+               <label for="garden">Garden/back of property: </label>
+               <input type="number" id="garden" name="garden">
+               <button type="remove">Remove</button>
+           
+               <div>
+                <label for="front">Driveway/front of property: </label>
+                <input type="number" id="front" name="front">
+                <button type="remove">Remove</button>
+               </div>
+            
+                <div>
+                <label for="location">Location: </label>
+                <input type="number" id="location" name="location">
+                <button type="remove">Remove</button>
+               </div>
+
+                <div>
+                <label for="commute">Commute: </label>
+                <input type="number" id="commute" name="commute">
+                <button type="remove">Remove</button>
+               </div>
+            
+               <div>
+                <label for="amenities">Local amenities: </label>
+                <input type="number" id="amenities" name="amenities">
+                <button type="remove">Remove</button>
+               </div>
+
+            <div>
+                  <input type="checkbox" id="like" name="like" value="Like">
+                  <label for="like">Do you like this property? </label>
+                  <button type="remove">Remove</button>
+               </div>
+              
+               <div>
+                <label for="pros">Pros </label>
+                <input type="text" id="pros" name="pros" required>
+                <button type="remove">Remove</button>
+                </div>
+             
+                <div>
+                <label for="cons">Cons </label>
+                <input type="text" id="cons" name="cons" required>
+                <button type="remove">Remove</button>
+               </div>
+               --> 
+             
+            <h3>Add your own rules to the form:</h3>
+
+            <form id="configuration-form" action="" method="POST">
+               <label for="ruleInput">Rule name </label>
+               <input type="text" id="ruleInput" name="rule">
+   
+            <div>
+               <button type="submit" id="updateList">Save List</button>
+               <button type="submit" id="addrule">Add Rule</button>
+             </div>
+            
+         </form>
+         
+      </main>
+      <footer>
+         &copy; dreamHouse 2025. Designed by T Vaughan.
+      </footer>
+      <script src="../js/app.js"></script>
+      <script>app.configure();
+      </script>
+   </body>
+</html>
