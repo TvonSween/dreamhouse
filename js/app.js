@@ -1,6 +1,7 @@
 // window is global scope - overarching thing we talk to
 // doucment - our page - attached to window - DOM. window.document
-
+import DataTable from 'datatables.net-dt';
+import 'datatables.net-responsive-dt';
 
 (function(app){
     'use strict';
