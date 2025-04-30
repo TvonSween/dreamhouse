@@ -73,7 +73,6 @@
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""></script>
-      <script> app.resultsMap()</script>
       <script>
       $(Document).ready( 
       function () {
@@ -83,6 +82,30 @@
          let table = new DataTable('#ratingTable', {
              responsive: true
          });
+
+         var map = L.map('map').setView([55.861, -4.25], 13);
+         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker = L.marker([55.85, -4.25]).addTo(map);
+        marker.bindPopup("<b>Laurieston Road</b><br>Score:84").openPopup();
+
+        var popup = L.popup()
+            .setLatLng([55.860, -4.25])
+            .setContent("I am a standalone popup.")
+            .openOn(map);
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+            }
+            
+            map.on('click', onMapClick);
+         
       </script>
    </body>
 </html>

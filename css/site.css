@@ -45,6 +45,7 @@ input, textarea {
 }
 
 button {
+    background-color: gold ;
     float: right;
     font-size: 0.75rem;
     padding: 0.25rem, 5%;
@@ -69,7 +70,6 @@ ul {
     line-height: 2rem;
 }
 
-
 footer {
     background-color: rgb(51, 190, 134);
     font-size: .6rem;
@@ -80,11 +80,7 @@ footer {
 
 #map { 
     height: 280px; 
-    margin: 2% 2%;
-}
-
-#ratingTable {
-    margin: 2% 2%;
+    margin: 2% 0;
 }
 
 .banner {
