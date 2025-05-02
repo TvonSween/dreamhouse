@@ -47,9 +47,10 @@ input, textarea {
 button {
     background-color: gold ;
     float: right;
-    font-size: 0.75rem;
-    padding: 0.25rem, 5%;
+    font-size: 1rem;
+    padding: 0.25rem, 10%;
     margin: 0.25rem;
+    border-radius: 5px;
 }
 
 header {
@@ -68,6 +69,21 @@ header a {
 ul {
     list-style-type: none;
     line-height: 2rem;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    border: 1px;
+    border-collapse: separate;
+  border-spacing: 20px 10px; 
+}
+
+th {
+    text-align: center;
+    background-color: gold;
+    border-radius: 5px;
+
 }
 
 footer {

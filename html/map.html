@@ -7,9 +7,6 @@
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" >
-      <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
    </head>
    <body>
       <header>
@@ -40,13 +37,15 @@
          <table id="ratingTable" class="display">
             <thead>
                 <tr>
-                    <th>Property</th>
-                    <th>Bedrooms</th>
-                    <th>Rating</th>
+                  <tr>
+                     <th>Property</th>
+                     <th>Bedroom</th>
+                     <th>Bathroom</th>
+                   </tr>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+               <tr>
                     <td>Row 1 Data 1</td>
                     <td>Row 1 Data 2</td>
                    <td>Row 1 Data 3</td>
@@ -74,16 +73,8 @@
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""></script>
       <script>
-      $(Document).ready( 
-      function () {
-       $('#ratingTable').DataTable();
-         } );
-
-         let table = new DataTable('#ratingTable', {
-             responsive: true
-         });
-
          var map = L.map('map').setView([55.861, -4.25], 13);
+
          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -105,7 +96,6 @@
             }
             
             map.on('click', onMapClick);
-         
       </script>
    </body>
 </html>

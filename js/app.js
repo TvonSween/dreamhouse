@@ -1,32 +1,30 @@
 // window is global scope - overarching thing we talk to
 // doucment - our page - attached to window - DOM. window.document
-import DataTable from 'datatables.net-dt';
-import 'datatables.net-responsive-dt';
+//import rating from './rate.js';
 
 (function(app){
     'use strict';
     const configurationItems = {};
     //const pageItems = {};
+    const formData = {};
 
     app.homepage = function() {
-        //loginStartup();
         //updateConfiguration();
-        loadFromStorage();
+        //loadFromStorage();
     };
 
     app.register = function() {
-       //enableRegistrationForm();
+       enableRegistrationForm();
+       //loadFromStorage();
     };
 
     app.configure = function() {
-        updateConfiguration();
-        loadFromStorage();
-  
+       updateConfiguration();
 
     };
 
     app.rate = function() {
-       
+        capturePropertyData();
     };
 
     function saveToLocalStorage() {
@@ -38,16 +36,15 @@ import 'datatables.net-responsive-dt';
             };
         });
 
-        localStorage.setItem('configuration-list', JSON.stringify(rulesToSave));
-
+        localStorage.setItem("configurationList", JSON.stringify(rulesToSave));
+     
     }
 
     function loadFromStorage() {
-        const configurationString = localStorage.getItem('configuration-list');
+        const configurationString = localStorage.getItem("configurationList");
 
         if (configurationString !== null) {
             const items = JSON.parse(configurationString);
-            //console.log(items);
             items.forEach(element  => {
                 const li = document.getElementById('li');
                 li.innerText = element.rule;
@@ -56,13 +53,13 @@ import 'datatables.net-responsive-dt';
                 }
                 configurationItems.configurationList.appendChild(li);
             });
+
         }
     }
     
-
     /*function loginStartup() {
         const form = document.getElementById('loginForm');
-        pageItems.completeLogin = document.getElementById('completeLogin');
+        pageItems.completeLogin = document.getElementById('complete-login');
         pageItems.username = form.querySelector('#username');
         pageItems.submit = form.querySelector('#submit');
 
@@ -77,7 +74,7 @@ import 'datatables.net-responsive-dt';
         pageItems.completeLogin.append(p);
         pageItems.username.value = '';
     }
-
+*/
    function enableRegistrationForm(){
         const registrationForm = document.getElementById('registration-form');
         registrationForm.onsubmit = registrationFormSubmit;
@@ -94,10 +91,8 @@ import 'datatables.net-responsive-dt';
         const mailto = `mailto:${email.value}?subject=Register From ${username.value}&body=${password.value}`;
         window.open(mailto);
     }   
-        */
 
     function updateConfiguration(){
-        e.preventDefault();
         const configurationForm = document.getElementById('configuration-form');
         configurationItems.configurationList = document.getElementById('configuration-list');
         configurationItems.ruleInput = configurationForm.querySelector('#ruleInput');
@@ -107,8 +102,12 @@ import 'datatables.net-responsive-dt';
         configurationItems.addButton.addEventListener('click', addConfigurationRule);
         configurationItems.configurationList.addEventListener('click', updateConfigurationRules);
         configurationItems.saveButton.addEventListener('click', completeConfigurationRules);
-        saveToLocalStorage();
+        loadFromStorage();
     }
+
+function test() {
+console.log('test');
+}
 
     function addConfigurationRule(e) {
        e.preventDefault();
@@ -121,7 +120,6 @@ import 'datatables.net-responsive-dt';
     }
 
     function updateConfigurationRules(e){
-        e.preventDefault();
         if (e.target.classList.contains('remove-list-item')) {
             e.target.classList.remove('remove-list-item');
         } else {
@@ -142,6 +140,63 @@ import 'datatables.net-responsive-dt';
         });
 
         saveToLocalStorage();
+    }
+
+    function capturePropertyData() {
+        const propertyForm = document.getElementById('rateForm');
+
+        formData = {
+            property: document.getElementById('property').value,
+            bedrooms: document.getElementById('bedrooms').value,
+            bathroom: document.getElementById('bathroom').value,
+            kitchen: document.getElementById('kitchen').value,
+            living: document.getElementById('living').value,
+            garden: document.getElementById('garden').value,
+            front: document.getElementById('front').value,
+            location: document.getElementById('location').value,
+            commute: document.getElementById('commute').value,
+            amenities: document.getElementById('amenities').value,
+            like: document.getElementById('like').checked,
+            pros: document.getElementById('pros').value,
+            cons: document.getElementById('cons').value
+          };
+
+        formData.submit = propertyForm.querySelector('#submit');
+
+        formData.submit.addEventListener('click', propertyFormSubmit);
+    }
+
+  
+function propertyFormSubmit(e) {
+    e.preventDefault();
+
+    const existingData = JSON.parse(localStorage.getItem("formData")) || {};
+    existingData.push(formData);
+    localStorage.setItem('rateFormDataList', JSON.stringify(existingData));
+
+    alert('Form data saved!');
+    form.reset();
+    populateTable();
+}
+     
+  
+function populateTable() {
+    const tableBody = document.getElementById('tbody');
+    if (!tableBody) return;
+  
+    tableBody.innerHTML = ''; 
+    const dataList = JSON.parse(localStorage.getItem('rateFormDataList')) || {};
+  
+    dataList.forEach(entry => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${formData.property.value}</td>
+          <td>${formData.bedrooms.value}</td>
+          <td>${formData.bathroom.value}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+ 
     }
 
 })(window.app = window.app || {});

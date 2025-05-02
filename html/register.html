@@ -52,9 +52,10 @@
       <footer>
          &copy; dreamHouse 2025. Designed by T Vaughan.
       </footer>
-      <script src="../js/app.js"></script>
-        <script> app.register();
-         /* const submitButton = document.getElementById('submit');
+      <!-- <script src="../js/app.js"></script>
+      <script>app.register()</script>-->s
+      <!--<script> app.enableRegistrationForm();
+          const submitButton = document.getElementById('submit');
          const userName = document.getElementById('username');
          //const list = document.getElementById('items');
          const eMail = document.getElementById('email');
@@ -90,6 +91,28 @@
 
          }
          */
+      </script>-->
+      <script>
+         $(document).ready(function() {
+
+         function enableRegistrationForm() {
+            const registrationForm = document.getElementById('registration-form');
+            registrationForm.onsubmit = registrationFormSubmit;
+         }
+    
+        function registrationFormSubmit(e) {
+            e.preventDefault();
+    
+            const registrationForm = document.getElementById('registration-form');
+            const username = document.getElementById('username');
+            //const username = registrationForm.querySelector('#username');
+            const email = registrationForm.querySelector('#email');
+            const password = registrationForm.querySelector('#password')
+        
+            const mailto = `mailto:${email.value}?subject=Register From ${username.value}&body=${password.value}`;
+            window.open(mailto);
+        }
+        });
       </script>
    </body>
 </html>
