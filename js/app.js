@@ -5,26 +5,23 @@
 (function(app){
     'use strict';
     const configurationItems = {};
-    //const pageItems = {};
+    const loginItems = {};
     const formData = {};
-
-    app.homepage = function() {
-        //updateConfiguration();
-        //loadFromStorage();
-    };
 
     app.register = function() {
        enableRegistrationForm();
-       //loadFromStorage();
     };
 
     app.configure = function() {
        updateConfiguration();
-
     };
 
     app.rate = function() {
         capturePropertyData();
+    };
+
+    app.loginStartUp = function() {
+        login();
     };
 
     function saveToLocalStorage() {
@@ -57,24 +54,24 @@
         }
     }
     
-    /*function loginStartup() {
+    function login() {
         const form = document.getElementById('loginForm');
-        pageItems.completeLogin = document.getElementById('complete-login');
-        pageItems.username = form.querySelector('#username');
-        pageItems.submit = form.querySelector('#submit');
+        loginItems.completeLogin = document.getElementById('complete-login');
+        loginItems.username = form.querySelector('#username');
+        loginItems.submit = form.querySelector('#submit');
 
-        pageItems.submit.addEventListener('click', loginSubmit);
+        loginItems.submit.addEventListener('click', loginSubmit);
     }
 
     function loginSubmit(e) {
         e.preventDefault();
 
-        const p = document.querySelector('p');
-        p.innerHTML = pageItems.username.value;
-        pageItems.completeLogin.append(p);
-        pageItems.username.value = '';
+        const div = document.getElementById('login-message');
+        div.innerHTML = `<p>Welcome ${loginItems.username.value}</p>`;
+        loginItems.completeLogin.append(div);
+        loginItems.username.value = '';
     }
-*/
+
    function enableRegistrationForm(){
         const registrationForm = document.getElementById('registration-form');
         registrationForm.onsubmit = registrationFormSubmit;
@@ -82,7 +79,6 @@
 
     function registrationFormSubmit(e) {
         e.preventDefault();
-
         const registrationForm = document.getElementById('registration-form');
         const username = registrationForm.querySelector('#username');
         const email = registrationForm.querySelector('#email');
@@ -105,9 +101,6 @@
         loadFromStorage();
     }
 
-function test() {
-console.log('test');
-}
 
     function addConfigurationRule(e) {
        e.preventDefault();
@@ -146,6 +139,7 @@ console.log('test');
         const propertyForm = document.getElementById('rateForm');
 
         formData = {
+            propertyList: document.getElementById('property-list'),
             property: document.getElementById('property').value,
             bedrooms: document.getElementById('bedrooms').value,
             bathroom: document.getElementById('bathroom').value,
@@ -170,9 +164,9 @@ console.log('test');
 function propertyFormSubmit(e) {
     e.preventDefault();
 
-    const existingData = JSON.parse(localStorage.getItem("formData")) || {};
+    const existingData = JSON.parse(localStorage.getItem("propertyList")) || {};
     existingData.push(formData);
-    localStorage.setItem('rateFormDataList', JSON.stringify(existingData));
+    localStorage.setItem("propertyList", JSON.stringify(existingData));
 
     alert('Form data saved!');
     form.reset();
@@ -185,7 +179,7 @@ function populateTable() {
     if (!tableBody) return;
   
     tableBody.innerHTML = ''; 
-    const dataList = JSON.parse(localStorage.getItem('rateFormDataList')) || {};
+    const dataList = JSON.parse(localStorage.getItem('propertyList')) || {};
   
     dataList.forEach(entry => {
     const row = document.createElement('tr');
