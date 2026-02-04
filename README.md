@@ -1,2 +1,2 @@
-# Web Development Project - Napier
+# Web Development Project
 Web development module
